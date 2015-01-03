@@ -226,11 +226,11 @@ GET /game?key=123abc&team_id=1375&include_past=1&finals_only=1
 		},
 		matchup: "Ravenwood Basketball vs St. James",
 		opponent: "St. James",
+		location: "Home",
 		sport: {
 			id: "2",
 			name: "Basketball"
 		},
-		neutral_location: "Seymour Tournament",
 		status: "Final",
 		scores: {
 			0: "62",
@@ -260,11 +260,11 @@ GET /game?key=123abc&team_id=1375&include_past=1&finals_only=1
 		},
 		matchup: "Ravenwood Basketball vs G.W. Carver",
 		opponent: "G.W. Carver",
+		location: "A Neutral Location",
 		sport: {
 			id: "2",
 			name: "Basketball"
 		},
-		neutral_location: "Seymour Tournament",
 		status: "Final",
 		scores: {
 			0: "64",
@@ -305,11 +305,11 @@ GET /game?key=123abc&team_id=1375&current_only=1
 		},
 		matchup: "Ravenwood Basketball vs Franklin Basketball - Boys",
 		opponent: "Franklin Basketball - Boys",
+		location: "Home",
 		sport: {
 			id: "2",
 			name: "Basketball"
 		},
-		neutral_location: "",
 		status: null,
 		scores: {
 			1349: "0",
