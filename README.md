@@ -1,12 +1,9 @@
-## API Documentation Version 1.2
-
-=======
-
-## Overview
+##### API Documentation Version 1.2
+# Overview
  
 Our REST API provides read-only access to the same data that powers our mobile app. The purpose of exposing this data is to allow other entities to develop their own presentation of the real-time, official, sports data that we collect.
 
-=======
+---
 
 #### API Access
 An API key can be generated for any active BallFrog App account. This key will need to be sent with each request.
@@ -20,39 +17,35 @@ To get setup with a key, send your request to [questions@ballfrog.com](mailto:qu
 
 If you don’t have an active account, you can install our app from the iTunes or Android app stores, or visit our mobile app at [http://app.ballfrog.com](http://app.ballfrog.com) to sign up. You'll need an activated account before we can provide you with an API key.
 
-=======
+---
 
 #### Available Data
 Most of the Team, Organization, and Game data displayed within our app are available through the API. See the corresponding "Making Requests" section to see exact data points.
 
-=======
+---
 
 #### Request Types
 The API is currently read-only, so, following the RESTful approach, GET requests are expected. 
 
-=======
+---
 
 #### Response Format
 All responses are JSON formatted.
 
 
-## Making Requests
-
+# Making Requests
 #### API Endpoint
 ```
 https://api.ballfrog.com
 ```
-
-=======
-
-#### Authentication
+####Authentication
 Since the REST API is stateless, all requests must include your API key.
 
 ```
 GET https://api.ballfrog.com/team?id=320&key=123abc
 ```
 
-=======
+---
 
 #### Team Data
 
@@ -94,7 +87,7 @@ GET /team?key=123abc&id=320
 ```
 *Notice that some basic organization info comes back in the team data. A separate /org request using this org_id would return all the organization data available.*
 
-=======
+---
 
 #### Organization Data
 
@@ -170,7 +163,7 @@ GET /org?key=123abc&state=TN&keyword=Columbia
 ]
 ```
 
-=======
+---
 
 #### Game Data
 
@@ -187,11 +180,11 @@ GET /org?key=123abc&state=TN&keyword=Columbia
 
 @PARAM current_only {number} 1 to return a single game record - the "current game" for the team; for this param to be respected, it must be passed with a single team_id **
 
-@PARAM include_past {number} 1 to show games prior to the current date;  otherwise, only future games are returned 
+@PARAM include_past {number} 1 to show games prior to the current date; otherwise, only future games are returned
 
-@PARAM date_after {string} YYYY-MM-DD format; games on or after date 
+@PARAM date_after {string} YYYY-MM-DD format; games on or after date
 
-@PARAM date_before {string} YYYY-MM-DD format; games on or before date 
+@PARAM date_before {string} YYYY-MM-DD format; games on or before date
 
 @PARAM limit {number} 1-50; defaults to 10
 
@@ -202,11 +195,11 @@ GET /org?key=123abc&state=TN&keyword=Columbia
 	OPT: start_datetime_asc
 	OPT: start_datetime_desc
 
-@PARAM id_index {number} 1 to have the results indexed by ID;  otherwise, the results will be zero-indexed
+@PARAM id_index {number} 1 to have the results indexed by ID; otherwise, the results will be zero-indexed
 
 ---
 
-GET /game?key=123abc &team_id=1375&include_past=1&finals_only=1
+GET /game?key=123abc&team_id=1375&include_past=1&finals_only=1
 
 ---
 
@@ -281,7 +274,7 @@ GET /game?key=123abc &team_id=1375&include_past=1&finals_only=1
 
 ---
 
-GET /game?key=123abc &team_id=1375&current_only=1
+GET /game?key=123abc&team_id=1375&current_only=1
 
 (The response below is an example of an unstarted game happening later in the day.)
 
@@ -328,7 +321,7 @@ GET /game?key=123abc &team_id=1375&current_only=1
 
 ***There is logic within the BallFrog system to determine what game is considered "current" for a team. It may be a game happening later that day, or a game from the prior day if no game is on the schedule for the current day.*
 
-=======
+---
 
 #### Game Activity Data
 
@@ -341,7 +334,7 @@ GET /game?key=123abc &team_id=1375&current_only=1
 
 ---
 
-GET /game_activity?key=123abc &game_id=123&sort=desc
+GET /game_activity?key=123abc&game_id=123&sort=desc
 
 ---
 
