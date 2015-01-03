@@ -38,6 +38,9 @@ All responses are JSON formatted.
 ```
 https://api.ballfrog.com
 ```
+
+---
+
 ####Authentication
 Since the REST API is stateless, all requests must include your API key.
 
