@@ -1,4 +1,3 @@
-##### API Documentation Version 1.2
 # Overview
  
 Our REST API provides read-only access to the same data that powers our mobile app. The purpose of exposing this data is to allow other entities to develop their own presentation of the real-time, official, sports data that we collect.
