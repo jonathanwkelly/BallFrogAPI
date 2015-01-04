@@ -3,12 +3,12 @@
   "version": "1.0.1",
   "paths": {
     "src": {
-      "scss": "/Development/ballfrog-api/wp-plugin/src/scss/",
-      "scripts": "/Development/ballfrog-api/wp-plugin/src/js/"
+      "scss": "scss/",
+      "scripts": "js/"
     },
     "dest": {
-      "css": "/Development/ballfrog-api/wp-plugin/ballfrog/css/",
-      "scripts": "/Development/ballfrog-api/wp-plugin/ballfrog/js/"
+      "css": "../ballfrog/css/",
+      "scripts": "../ballfrog/js/"
     }
   },
   "devDependencies": {

@@ -18,7 +18,7 @@ module.exports = function(grunt)
                 src: [
                     '<%= pkg.paths.src.scripts %>moment-2.8.4.js',
                     '<%= pkg.paths.src.scripts %>markup-1.5.21.js',
-                    '<%= pkg.paths.src.scripts %>markup-ballfrog-pipes.js',
+                    '<%= pkg.paths.src.scripts %>custom.js',
                     '<%= pkg.paths.src.scripts %>lib.ballfrog.js'
                 ],
                 dest: '<%= pkg.paths.src.scripts %><%= pkg.name %>.concat.js'
