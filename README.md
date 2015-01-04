@@ -182,6 +182,8 @@ GET /org?key=123abc&state=TN&keyword=Columbia
 
 @PARAM current_only {number} 1 to return a single game record - the "current game" for the team; for this param to be respected, it must be passed with a single team_id **
 
+@PARAM include_activity {number} 1 to return the updates for each game
+
 @PARAM include_past {number} 1 to show games prior to the current date; otherwise, only future games are returned
 
 @PARAM date_after {string} YYYY-MM-DD format; games on or after date
@@ -201,7 +203,7 @@ GET /org?key=123abc&state=TN&keyword=Columbia
 
 ---
 
-GET /game?key=123abc&team_id=1375&include_past=1&finals_only=1
+GET /game?key=123abc&team_id=1375&include_past=1&finals_only=1&include_activity=1
 
 ---
 
@@ -238,6 +240,68 @@ GET /game?key=123abc&team_id=1375&include_past=1&finals_only=1
 			result: "L"
 		},
 		comments: null,
+		activity: [
+			{
+				datetime: "2014-12-30T16:31:49-06:00",
+				type: "score",
+				scores: {
+					0: "62",
+					1375: "47"
+				},
+				summary: "Ravenwood Basketball: 47, St. James : 62 (Final)",
+				comments: "Final"
+			},
+			{
+				datetime: "2014-12-30T16:31:15-06:00",
+				type: "score",
+				scores: {
+					0: "62",
+					1375: "47"
+				},
+				summary: "Ravenwood Basketball: 47, St. James : 62 (4th Quarter)",
+				comments: "End of 4Q"
+			},
+			{
+				datetime: "2014-12-30T16:08:56-06:00",
+				type: "score",
+				scores: {
+					0: "44",
+					1375: "22"
+				},
+				summary: "Ravenwood Basketball: 22, St. James : 44 (3rd Quarter)",
+				comments: "End of 3Q"
+			},
+			{
+				datetime: "2014-12-30T15:41:27-06:00",
+				type: "score",
+				scores: {
+					0: "22",
+					1375: "14"
+				},
+				summary: "Ravenwood Basketball: 14, St. James : 22 (Halftime)",
+				comments: "At the half"
+			},
+			{
+				datetime: "2014-12-30T15:40:59-06:00",
+				type: "score",
+				scores: {
+					0: "22",
+					1375: "14"
+				},
+				summary: "Ravenwood Basketball: 14, St. James : 22 (2nd Quarter)",
+				comments: "End of 2Q"
+			},
+			{
+				datetime: "2014-12-30T15:26:05-06:00",
+				type: "score",
+				scores: {
+					0: "14",
+					1375: "8"
+				},
+				summary: "Ravenwood Basketball: 8, St. James : 14 (1st Quarter)",
+				comments: "End of 1Q"
+			}
+		],
 		last_update: "3 days ago"
 	},
 	{
@@ -272,6 +336,7 @@ GET /game?key=123abc&team_id=1375&include_past=1&finals_only=1
 			result: "W"
 		},
 		comments: null,
+		activity: [],
 		last_update: "4 days ago"
 	}
 ]
@@ -325,85 +390,3 @@ GET /game?key=123abc&team_id=1375&current_only=1
 **Each team manages their own schedule. What this means is that there could exist a game record for Team A vs. Team B, but also another for Team B vs. Team A. If Team ID(s) or School ID(s) are passed in, the API will just search for game records created under the passed in Teams/Schools, and not return games where those Teams/Schools are selected as the opponent.*
 
 ***There is logic within the BallFrog system to determine what game is considered "current" for a team. It may be a game happening later that day, or a game from the prior day if no game is on the schedule for the current day.*
-
----
-
-#### Game Activity Data
-
-```
-@PARAM game_id {number} (required) A single ID
-
-@PARAM sort {string} 
-	OPT: desc (default) Show the most recent items first
-	OPT: asc Show the oldest items first
-
----
-
-GET /game_activity?key=123abc&game_id=123&sort=desc
-
----
-
-
-[
-	{
-		datetime: "2014-12-30T15:26:05-06:00",
-		type: "score",
-		scores: {
-			0: "14",
-			1375: "8"
-		},
-		summary: "Ravenwood Basketball: 8, St. James : 14 (1st Quarter)",
-		comments: "End of 1Q"
-	},
-	{
-		datetime: "2014-12-30T15:40:59-06:00",
-		type: "score",
-		scores: {
-			0: "22",
-			1375: "14"
-		},
-		summary: "Ravenwood Basketball: 14, St. James : 22 (2nd Quarter)",
-		comments: "End of 2Q"
-	},
-	{
-		datetime: "2014-12-30T15:41:27-06:00",
-		type: "score",
-		scores: {
-			0: "22",
-			1375: "14"
-		},
-		summary: "Ravenwood Basketball: 14, St. James : 22 (Halftime)",
-		comments: "At the half"
-	},
-	{
-		datetime: "2014-12-30T16:08:56-06:00",
-		type: "score",
-		scores: {
-			0: "44",
-			1375: "22"
-		},
-		summary: "Ravenwood Basketball: 22, St. James : 44 (3rd Quarter)",
-		comments: "End of 3Q"
-	},
-	{
-		datetime: "2014-12-30T16:31:15-06:00",
-		type: "score",
-		scores: {
-			0: "62",
-			1375: "47"
-		},
-		summary: "Ravenwood Basketball: 47, St. James : 62 (4th Quarter)",
-		comments: "End of 4Q"
-	},
-	{
-		datetime: "2014-12-30T16:31:49-06:00",
-		type: "score",
-		scores: {
-			0: "62",
-			1375: "47"
-		},
-		summary: "Ravenwood Basketball: 47, St. James : 62 (Final)",
-		comments: "Final"
-	}
-]
-```
