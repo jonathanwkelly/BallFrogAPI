@@ -182,7 +182,9 @@ GET /org?key=123abc&state=TN&keyword=Columbia
 
 @PARAM current_only {number} 1 to return a single game record - the "current game" for the team; for this param to be respected, it must be passed with a single team_id **
 
-@PARAM include_activity {number} 1 to return the updates for each game
+@PARAM include_activity {number} 1 to return the updates for each game; this would include status changes, score changes, notes submitted by a reporter.
+
+@PARAM include_scoreboard {number} 1 to include all game statuses (even those that have not yet been played) and the score for that status. Useful for displaying a traditional scoreboard grid. ***
 
 @PARAM include_past {number} 1 to show games prior to the current date; otherwise, only future games are returned
 
@@ -203,7 +205,7 @@ GET /org?key=123abc&state=TN&keyword=Columbia
 
 ---
 
-GET /game?key=123abc&team_id=1375&include_past=1&finals_only=1&include_activity=1
+GET /game?key=123abc&team_id=1375&include_activity=1&include_scoreboard=1&limit=1
 
 ---
 
@@ -239,6 +241,38 @@ GET /game?key=123abc&team_id=1375&include_past=1&finals_only=1&include_activity=
 			full: "47-62",
 			result: "L"
 		},
+		scoreboard: [
+			[
+				"",
+				"Ravenwood Basketball",
+				"St. James "
+			],
+			[
+				"1",
+				8,
+				14
+			],
+			[
+				"2",
+				6,
+				8
+			],
+			[
+				"3",
+				8,
+				22
+			],
+			[
+				"4",
+				25,
+				18
+			],
+			[
+				"Final",
+				47,
+				62
+			]
+		],
 		comments: null,
 		activity: [
 			{
@@ -303,41 +337,6 @@ GET /game?key=123abc&team_id=1375&include_past=1&finals_only=1&include_activity=
 			}
 		],
 		last_update: "3 days ago"
-	},
-	{
-		id: "18837",
-		datetime: "2014-12-29T18:00:00-06:00",
-		teams: {
-			0: {
-				id: "0",
-				name: "G.W. Carver",
-				home_team: true,
-				org_id: null
-			},
-			1375: {
-				id: "1375",
-				name: "Ravenwood Basketball",
-				home_team: false,
-				org_id: "117"
-			}
-		},
-		matchup: "Ravenwood Basketball vs G.W. Carver",
-		opponent: "G.W. Carver",
-		location: "A Neutral Location",
-		sport: {
-			id: "2",
-			name: "Basketball"
-		},
-		status: "Final",
-		scores: {
-			0: "64",
-			1375: "78",
-			full: "78-64",
-			result: "W"
-		},
-		comments: null,
-		activity: [],
-		last_update: "4 days ago"
 	}
 ]
 
@@ -381,7 +380,9 @@ GET /game?key=123abc&team_id=1375&current_only=1
 			full: null,
 			result: null
 		},
+		scoreboard: [],
 		comments: null,
+		activity: [],
 		last_update: null
 	}
 ]
@@ -390,3 +391,5 @@ GET /game?key=123abc&team_id=1375&current_only=1
 **Each team manages their own schedule. What this means is that there could exist a game record for Team A vs. Team B, but also another for Team B vs. Team A. If Team ID(s) or School ID(s) are passed in, the API will just search for game records created under the passed in Teams/Schools, and not return games where those Teams/Schools are selected as the opponent.*
 
 ***There is logic within the BallFrog system to determine what game is considered "current" for a team. It may be a game happening later that day, or a game from the prior day if no game is on the schedule for the current day.*
+
+****The scoreboard is imagined as a table/grid with a heading row, then a row for each team. This is the way in which the data is included in the scoreboard response. The first array would be the first column with no heading, then a team name in the next two rows in that column. The next array would be a shorthand indicator of the first period of the game (say, for 1st QTR a "1" is used,) then each team's score. The next array would be the second period, etc. until all scoring periods for that sport are included.*
