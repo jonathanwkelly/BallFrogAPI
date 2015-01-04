@@ -242,36 +242,12 @@ GET /game?key=123abc&team_id=1375&include_activity=1&include_scoreboard=1&limit=
 			result: "L"
 		},
 		scoreboard: [
-			[
-				"",
-				"Ravenwood Basketball",
-				"St. James "
-			],
-			[
-				"1",
-				8,
-				14
-			],
-			[
-				"2",
-				6,
-				8
-			],
-			[
-				"3",
-				8,
-				22
-			],
-			[
-				"4",
-				25,
-				18
-			],
-			[
-				"Final",
-				47,
-				62
-			]
+			[ "", "Ravenwood Basketball", "St. James" ],
+			[ "1", 8, 14 ],
+			[ "2", 6, 8 ],
+			[ "3", 8, 22 ],
+			[ "4", 25, 18 ],
+			[ "Final", 47, 62 ]
 		],
 		comments: null,
 		activity: [
