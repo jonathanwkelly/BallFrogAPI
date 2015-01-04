@@ -1,0 +1,48 @@
+<table cellpadding="0" cellspacing="1" border="0" class="ballfrog-grid ballfrog-scoreboard">
+	
+	<!-- just the first game row that we get back -->
+
+	{{rows.0}}
+	
+		<!-- loop through the scoreboard data three times - - one for each row -->
+
+		<thead>
+			<tr>
+				<!-- this time, just output the first element in each array, which will be for the col heading -->
+				{{scoreboard}}
+					<th class="{{if #|first}}first{{else}}txt-center{{/if}}">{{0}}</th>
+				{{/scoreboard}}
+			</tr>
+		</thead>
+
+		<!-- now output array elements indexed at 1 and 2, for the team scores rows -->
+		<tbody>
+			<tr>
+				{{scoreboard}}
+					<td class="{{if #|first}}first{{else}}txt-center{{/if}}">{{1}}</td>
+				{{/scoreboard}}
+			</tr>
+			<tr>
+				{{scoreboard}}
+					<td class="{{if #|first}}first{{else}}txt-center{{/if}}">{{2}}</td>
+				{{/scoreboard}}
+			</tr>
+		</tbody>
+	
+	{{/rows.0}}
+
+</table>
+
+<div class="ballfrog-activity">
+	<h5>Game Activity</h5>
+	{{rows.0}}
+		{{activity}}
+			<div class="activity-item">
+				{{if comments}}
+					<q>{{comments}}</q>
+				{{/if}}
+				<small>{{summary}}</small>
+			</div>
+		{{/activity}}
+	{{/rows.0}}
+</div>

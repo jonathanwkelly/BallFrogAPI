@@ -8,7 +8,7 @@
 	width: 100%;
 
 	/* table grid */
-	table{
+	.ballfrog-grid{
 
 		th{
 			background-color: #efefef;
@@ -19,8 +19,51 @@
 			color: #555;
 			font-size: .85em;
 		}
+
+		.txt-center{
+			text-align: center;
+		}
 	
-	} /* /table */
+	} /* /.ballfrog-grid */
+
+	.ballfrog-scoreboard{
+
+		td, th{
+			width: 15%;
+		}
+
+		.first{
+			width: 40%;
+		}
+	
+	} /* /.ballfrog-scoreboard */
+
+	.ballfrog-activity{
+
+		.activity-item{
+			background-color: #efefef;
+			border-radius: 3px;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			float: left;
+			font-size: .8em;
+			margin-bottom: .5em;
+			padding: 1% 3%;
+			width: 94%;
+
+			q, small{
+				clear: both;
+				display: inline-block;
+				float: left;
+			}
+
+			small{
+				clear: both;
+				display: inline-block;
+			}
+		}
+
+	} /* /.ballfrog-activity */
 
 	/* pre-population loading message */
 	.loader{
