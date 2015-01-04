@@ -3,8 +3,8 @@
   "version": "1.0.1",
   "paths": {
     "src": {
-      "scss": "/Development/ballfrog-api/wp-plugin-src/scss/",
-      "scripts": "/Development/ballfrog-api/wp-plugin-src/js/"
+      "scss": "/Development/ballfrog-api/wp-plugin/src/scss/",
+      "scripts": "/Development/ballfrog-api/wp-plugin/src/js/"
     },
     "dest": {
       "css": "/Development/ballfrog-api/wp-plugin/ballfrog/css/",
