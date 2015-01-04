@@ -1,0 +1,33 @@
+<table cellpadding="0" cellspacing="1" border="0">
+	<thead>
+		<tr>
+			<th>Date/Time</th>
+			<th>Opponent</th>
+			<th>Location</th>
+			<th>Status</th>
+			<th>Result</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{if rows}}
+			{{rows}}
+				<tr>
+					<td>{{datetime|date>ddd, MMM D}}</td>
+					<td>{{opponent}}</td>
+					<td>{{location}}</td>
+					<td>{{if status}}{{status}}{{/if}}</td>
+					<td>
+						{{if scores.full}}{{scores.full}}{{/if}}
+						{{if scores.result}} ({{scores.result}}){{/if}}
+					</td>
+				</tr>
+			{{/rows}}
+		{{else}}
+			<tr>
+				<td colspan="5">
+					Sorry, no games to be shown.
+				</td>
+			</tr>
+		{{/if}}
+	</tbody>
+</table>

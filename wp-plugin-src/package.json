@@ -1,0 +1,21 @@
+{
+  "name": "ballfrog-api",
+  "version": "1.0.1",
+  "paths": {
+    "src": {
+      "scss": "/Development/ballfrog-api/wp-plugin-src/scss/",
+      "scripts": "/Development/ballfrog-api/wp-plugin-src/js/"
+    },
+    "dest": {
+      "css": "/Development/ballfrog-api/wp-plugin/ballfrog/css/",
+      "scripts": "/Development/ballfrog-api/wp-plugin/ballfrog/js/"
+    }
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-sass": "^0.8.1",
+    "grunt-contrib-uglify": "^0.7.0",
+    "matchdep": "^0.3.0"
+  }
+}
