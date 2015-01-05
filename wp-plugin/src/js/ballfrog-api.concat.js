@@ -3440,6 +3440,8 @@ window.ballfrog = window.ballfrog || {};
 
 window.ballfrog.load = (function(BF, $)
 {
+	var refreshTimeouts = {};
+
 	var elemAttrs = function(element, filter)
 	{
 		var attrs = {},
@@ -3450,10 +3452,13 @@ window.ballfrog.load = (function(BF, $)
 
 		$.each(element.attributes, function(index, attr)
 		{
-			var key = cleanKey(attr.name);
+			if(attr.name != "class" && attr.name != "id")
+			{
+				var key = cleanKey(attr.name);
 
-			if(!filter || (key != "ballfrog" && key != "type" && key != "template"))
-				attrs[key] = attr.value;
+				if(!filter || (key != "ballfrog" && key != "type" && key != "template"))
+					attrs[key] = attr.value;
+			}
 		});
 
 		return attrs;
@@ -3484,13 +3489,20 @@ window.ballfrog.load = (function(BF, $)
 
 	// ----
 
-	/* init each api output element */
-
-	$("[data-ballfrog='team'],[data-ballfrog='org'],[data-ballfrog='game'],[data-ballfrog='game_activity']").each(function()
+	var populateElement = function($element)
 	{
-		var $element = $(this),
-			params = elemAttrs(this, false),
-			paramsFiltered = elemAttrs(this, true);
+		if(!$element.size())
+			return;
+
+		if(typeof refreshTimeouts[$element.attr("id")] != "undefined")
+			clearTimeout(refreshTimeouts[$element.attr("id")]);
+
+		if(!$element.attr("id"))
+			$element.attr("id", "bf-element-" + Math.floor((Math.random() * 100000) + 1));
+
+		var id = $element.attr("id"),
+			params = elemAttrs($element.get(0), false),
+			paramsFiltered = elemAttrs($element.get(0), true);
 
 		$element.addClass("ballfrog-api-output");
 
@@ -3500,16 +3512,58 @@ window.ballfrog.load = (function(BF, $)
 			function(json)
 			{
 				$element
-					.children(".loader").remove()
+					.find(":not(.ballfrog-powered-by)").remove()
 				.end()
 				.prepend(
 					Mark.up(
 						BF.templates[$element.attr("data-bfconfig-template")],
-						{rows: json}
+						{
+							refresh_button: '<div class="ballfrog-refresh" class="bf-hide"><a href="#" title="Click to refresh"></a></div>',
+							rows: json
+						}
 					)
 				);
+
+				initRefresh($element);
 			}
 		);
+	};
+
+	// ----
+
+	var initRefresh = function($element)
+	{
+		var $btn = $element.find(".ballfrog-refresh"),
+			$a = $btn.children("a");
+
+		$a.text("Updated at " + moment().format("h:mma"));
+
+		$btn
+			.removeClass("bf-hide")
+			.on("click", function()
+			{
+				$a
+					.addClass("bf-refresh-loading")
+					.text("Refreshing...");
+
+				populateElement($element);
+
+				return false;
+			});
+
+		refreshTimeouts[$element.attr("id")] = setTimeout(function()
+		{
+			populateElement($element);
+		}, 300000);
+	};
+
+	// ----
+
+	/* init each api output element */
+
+	$("[data-ballfrog='team'],[data-ballfrog='org'],[data-ballfrog='game'],[data-ballfrog='game_activity']").each(function()
+	{
+		populateElement($(this));
 	});
 
 })(window.ballfrog, jQuery);

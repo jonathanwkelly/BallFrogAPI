@@ -40,7 +40,7 @@
 
 	.ballfrog-activity{
 
-		.activity-item{
+		.bf-activity-item{
 			background-color: #efefef;
 			border-radius: 3px;
 			-webkit-border-radius: 3px;
@@ -64,6 +64,27 @@
 		}
 
 	} /* /.ballfrog-activity */
+
+	.ballfrog-refresh{
+
+		a{
+			background: transparent url(../images/refresh.png) 0 8px no-repeat scroll;
+			border: 0 none;
+			color: #999;
+			display: inline-block;
+			font-size: .7em;
+			line-height: 1;
+			outline: 0 none;
+			padding: 10px 0 10px 21px;
+			text-decoration: none;
+
+			&.bf-refresh-loading{
+				background-image: url(../images/loading.gif);
+				font-style: italic;
+			}
+		}
+
+	} /* /.ballfrog-refresh */
 
 	/* pre-population loading message */
 	.loader{
@@ -96,6 +117,10 @@
 		&:hover{
 			color: white;
 		}
+	}
+
+	.bf-hide{
+		display: none !important;
 	}
 
 } /* /.ballfrog-api-output */

@@ -63,6 +63,10 @@ Assuming the raw datetime value is ``` 2014-12-30T16:15:00-06:00 ```, the output
 
 You can add your own custom pipes in the file ```wp-plugin/src/js/custom.js``` 
 
+#### Refresh Element
+
+In any template, you can include a pre-defined tag of ``` {{refresh_button}} ``` to output a refresh button and message. The output will be a refresh icon that, when clicked, will perform the API call as defined again, repopulating the template with fresh data. 
+
 #### Customizing Front-End Assets
 
 All the source is available in ```wp-plugin/src/```. An overview of each file:
