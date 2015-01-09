@@ -36,16 +36,18 @@
 
 </table>
 
-<div class="ballfrog-activity">
-	<h5>Game Activity</h5>
-	{{rows.0}}
-		{{activity}}
-			<div class="bf-activity-item">
-				{{if comments}}
-					<q>{{comments}}</q>
-				{{/if}}
-				<small>{{summary}}</small>
-			</div>
-		{{/activity}}
-	{{/rows.0}}
-</div>
+{{if rows.0.activity}}
+	<div class="ballfrog-activity">
+		<h5>Game Activity</h5>
+		{{rows.0}}
+			{{activity}}
+				<div class="bf-activity-item">
+					{{if comments}}
+						<q>{{comments}}</q>
+					{{/if}}
+					<small>{{summary}}</small>
+				</div>
+			{{/activity}}
+		{{/rows.0}}
+	</div>
+{{/if}}
