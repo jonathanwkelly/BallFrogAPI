@@ -17,7 +17,7 @@ To get setup with a key, send your request to [questions@ballfrog.com](mailto:qu
 ---
 
 #### Available Data
-Most of the Team, Organization, and Game data displayed within our app are available through the API. See the "Making Requests" section for endpoints and parameters.
+Most of the Team, Organization, and Game data displayed within our app are available through the API. See the [Making Requests](#making-requests) section for endpoints and parameters.
 
 ---
 
