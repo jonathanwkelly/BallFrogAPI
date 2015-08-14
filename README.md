@@ -1,11 +1,11 @@
 # Overview
  
-Our REST API provides read-only access to the same data that powers our mobile app. The purpose of exposing this data is to allow other entities to develop their own presentation of the real-time, official, sports data that we collect.
+The [BallFrog](http://ballfrog.com) REST API provides read-only access to the same data that powers our mobile app. The purpose of exposing this data is to allow other entities to develop their own presentation of the real-time, official, sports data that we collect.
 
 ---
 
 #### API Access
-An API key can be generated for any active BallFrog App account. This key will need to be sent with each request.
+An API key can be generated for any active BallFrog account. This key will need to be sent with each request. If you don't have an active account, install our app from the [iOS App Store](https://itunes.apple.com/us/app/ballfrog/id681584485?mt=8) or [Google Play](https://play.google.com/store/apps/details?id=com.ballfrog.app&hl=en) and create one.
 
 To get setup with a key, send your request to [questions@ballfrog.com](mailto:questions@ballfrog.com), including the following details:
 
@@ -14,37 +14,34 @@ To get setup with a key, send your request to [questions@ballfrog.com](mailto:qu
  * Phone number
  * Brief description of intended use of API
 
-If you don’t have an active account, you can install our app from the iTunes or Android app stores, or visit our mobile app at [http://app.ballfrog.com](http://app.ballfrog.com) to sign up. You'll need an activated account before we can provide you with an API key.
-
 ---
 
 #### Available Data
-Most of the Team, Organization, and Game data displayed within our app are available through the API. See the corresponding "Making Requests" section to see exact data points.
+Most of the Team, Organization, and Game data displayed within our app are available through the API. See the "Making Requests" section for endpoints and parameters.
 
 ---
 
 #### Request Types
-The API is currently read-only, so, following the RESTful approach, GET requests are expected. 
+The API is currently read-only, so following the RESTful approach, `GET` requests are expected. 
 
 ---
 
 #### Response Format
-All responses are JSON formatted.
-
+All responses are `JSON`
 
 # Making Requests
-#### API Endpoint
+#### API Base Endpoint
 ```
-https://api.ballfrog.com
+https://app.ballfrog.com/api
 ```
 
 ---
 
 ####Authentication
-Since the REST API is stateless, all requests must include your API key.
+All requests must include your public API key.
 
 ```
-GET https://api.ballfrog.com/team?id=320&key=123abc
+GET https://app.ballfrog.com/api/team?id=320&key=123abc
 ```
 
 ---
