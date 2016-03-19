@@ -3469,7 +3469,7 @@ window.ballfrog.load = (function(BF, $)
 	var doApiCall = function(type, params, callback)
 	{
 		$.ajax({
-			url: "http://app.ballfrog.com/api/" + type,
+			url: "https://app.ballfrog.com/api/" + type,
 			type: "POST",
 			dataType: "json",
 			data: $.extend(
