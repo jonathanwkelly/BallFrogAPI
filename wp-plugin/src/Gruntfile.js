@@ -38,21 +38,26 @@ module.exports = function(grunt)
                 }
             }
         },
-        sass: 
+        sass:
         {
-            dist: 
+            dist:
             {
-                options: 
+                options:
                 {
                     banner: '/*! <%= pkg.name %> <%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd") %> */',
                     sourcemap: 'none',
                     style: 'compressed'
                 },
-                files: 
+                files:
                 {
                     '<%= pkg.paths.dest.css %><%= pkg.name %>.css': '<%= pkg.paths.src.scss %><%= pkg.name %>.scss'
                 }
             }
+        },
+        watch:
+        {
+            files: ['js/lib.ballfrog.js', 'js/custom.js', 'scss/ballfrog-api.scss'],
+            tasks: ['sass', 'concat', 'uglify']
         }
     });
 };
