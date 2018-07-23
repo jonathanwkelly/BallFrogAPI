@@ -56,8 +56,14 @@ module.exports = function(grunt)
         },
         watch:
         {
-            files: ['js/lib.ballfrog.js', 'js/custom.js', 'scss/ballfrog-api.scss'],
-            tasks: ['sass', 'concat', 'uglify']
+            js: {
+                files: ['js/lib.ballfrog.js', 'js/custom.js'],
+                tasks: ['concat', 'uglify']
+            },
+            sass: {
+                files: ['scss/*.scss'],
+                tasks: ['sass']
+            }
         }
     });
 };
