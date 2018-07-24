@@ -5,6 +5,8 @@
 			<th>Opponent</th>
 			<th>Location</th>
 			<th>Status</th>
+			<th>Score</th>
+			<th>Opponent Score</th>
 			<th>Result</th>
 		</tr>
 	</thead>
@@ -12,10 +14,12 @@
 		{{if rows}}
 			{{rows}}
 				<tr>
-					<td>{{datetime|date>ddd, MMM D}}</td>
+					<td>{{starts_at|date>ddd, MMM D}}</td>
 					<td>{{opponent}}</td>
 					<td>{{location}}</td>
 					<td>{{if status}}{{status}}{{/if}}</td>
+					<td>{{if score}}{{score}}{{/if}}</td>
+					<td>{{if opponent_score}}{{opponent_score}}{{/if}}</td>
 					<td>
 						{{if scores.full}}{{scores.full}}{{/if}}
 						{{if scores.result}} ({{scores.result}}){{/if}}

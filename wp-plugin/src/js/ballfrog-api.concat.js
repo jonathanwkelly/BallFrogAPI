@@ -3468,6 +3468,15 @@ window.ballfrog.load = (function(BF, $)
 
 	var doApiCall = function(type, params, callback)
 	{
+		switch (type) {
+			case 'game':
+				type = 'games';
+				params.include = "activity,scoreboard,sport,team";
+			break;
+			case 'games':
+				params.include = "activity,scoreboard,sport,team";
+			break;
+		}
 		$.ajax({
 			url: "https://v4-api.ballfrog.com/api/" + type,
 			type: "GET",
