@@ -41,6 +41,10 @@ window.ballfrog.load = (function(BF, $)
 			case 'games':
 				params.include = "activity,scoreboard,sport,team";
 			break;
+			case 'roster':
+				type = 'teams/'+params.team_id+'/rosters';
+				params.include = "players";
+			break;
 		}
 		$.ajax({
 			url: "https://v4-api.ballfrog.com/api/" + type,
@@ -135,7 +139,7 @@ window.ballfrog.load = (function(BF, $)
 
 	/* init each api output element */
 
-	$("[data-ballfrog='team'],[data-ballfrog='org'],[data-ballfrog='games'],[data-ballfrog='game'],[data-ballfrog='game_activity']").each(function()
+	$("[data-ballfrog='team'],[data-ballfrog='org'],[data-ballfrog='roster'],[data-ballfrog='games'],[data-ballfrog='game'],[data-ballfrog='game_activity']").each(function()
 	{
 		populateElement($(this));
 	});

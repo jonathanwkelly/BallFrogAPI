@@ -1,0 +1,33 @@
+{{if rows}}
+	<table cellpadding="0" cellspacing="1" border="0" class="ballfrog-grid">
+		<thead>
+			<tr>
+				<th class="txt-center">#</th>
+				<th class="txt-left">Name</th>
+				<th class="txt-left">Position</th>
+				<th class="txt-center">Gr.</th>
+				<th class="txt-center">Ht.</th>
+				<th class="txt-center">Wt.</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{rows.0.players.data}}
+				<tr>
+					<td class="txt-center">{{number}}</td>
+					<td class="txt-left"><strong>{{name_full}}</strong></td>
+					<td class="txt-left">{{position}}</td>
+					<td class="txt-center">
+						{{if grade|equals>9}}Fr.{{/if}}
+						{{if grade|equals>10}}So.{{/if}}
+						{{if grade|equals>11}}Jr.{{/if}}
+						{{if grade|equals>12}}Sr.{{/if}}
+					</td>
+					<td class="txt-center">
+						{{if height|equals>"null"}}-{{else}}{{height}}{{/if}}
+					</td>
+					<td class="txt-center">{{weight}}</td>
+				</tr>
+			{{/rows.0.players.data}}
+		</tbody>
+	</table>
+{{/if}}
