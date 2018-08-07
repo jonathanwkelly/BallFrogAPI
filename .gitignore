@@ -1,2 +1,3 @@
 .DS_Store
 wp-plugin/src/.sass-cache/*
+node_modules/
