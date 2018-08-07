@@ -5,8 +5,6 @@
 			<th>Opponent</th>
 			<th>Location</th>
 			<th>Status</th>
-			<th>Score</th>
-			<th>Opponent Score</th>
 			<th>Result</th>
 		</tr>
 	</thead>
@@ -18,8 +16,6 @@
 					<td>{{opponent}}</td>
 					<td>{{location}}</td>
 					<td>{{if status}}{{status}}{{/if}}</td>
-					<td>{{if score}}{{score}}{{/if}}</td>
-					<td>{{if opponent_score}}{{opponent_score}}{{/if}}</td>
 					<td>
 						{{if scores.full}}{{scores.full}}{{/if}}
 						{{if scores.result}} ({{scores.result}}){{/if}}

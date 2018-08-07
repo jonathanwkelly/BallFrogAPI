@@ -3468,14 +3468,28 @@ window.ballfrog.load = (function(BF, $)
 
 	var doApiCall = function(type, params, callback)
 	{
+		switch (type) {
+			case 'game':
+				type = 'games';
+				params.include = "activity,scoreboard,sport,team";
+			break;
+			case 'games':
+				params.include = "activity,scoreboard,sport,team";
+			break;
+			case 'roster':
+				type = 'teams/'+params.team_id+'/rosters';
+				params.include = "players";
+			break;
+		}
 		$.ajax({
-			url: "https://app.ballfrog.com/api/" + type,
-			type: "POST",
+			url: "https://v4-api.ballfrog.com/api/" + type,
+			type: "GET",
 			dataType: "json",
-			data: $.extend(
-				params,
-				{key: BF.apiKey}
-			),
+			headers: {
+				"bfappsite": "tnhsf",
+				"X-Authorization": BF.apiKey
+			},
+			data: params,
 			success: callback,
 			error: function(error)
 			{
@@ -3505,7 +3519,6 @@ window.ballfrog.load = (function(BF, $)
 			paramsFiltered = elemAttrs($element.get(0), true);
 
 		$element.addClass("ballfrog-api-output");
-
 		doApiCall(
 			params.type,
 			paramsFiltered,
@@ -3519,7 +3532,7 @@ window.ballfrog.load = (function(BF, $)
 						BF.templates[$element.attr("data-bfconfig-template")],
 						{
 							refresh_button: '<div class="ballfrog-refresh" class="bf-hide"><a href="#" title="Click to refresh"></a></div>',
-							rows: json
+							rows: json.data
 						}
 					)
 				);
@@ -3561,7 +3574,7 @@ window.ballfrog.load = (function(BF, $)
 
 	/* init each api output element */
 
-	$("[data-ballfrog='team'],[data-ballfrog='org'],[data-ballfrog='game'],[data-ballfrog='game_activity']").each(function()
+	$("[data-ballfrog='team'],[data-ballfrog='org'],[data-ballfrog='roster'],[data-ballfrog='games'],[data-ballfrog='game'],[data-ballfrog='game_activity']").each(function()
 	{
 		populateElement($(this));
 	});
