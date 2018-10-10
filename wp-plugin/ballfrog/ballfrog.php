@@ -32,26 +32,26 @@ function ballfrog_api_output($args)
         return ballfrog_to_console('No valid template defined in shortcode.');
 
     /* get the contents of the template to be used */
-    $out = '<script>' . 
-        'window.ballfrog = window.ballfrog || {};' . 
-        'window.ballfrog.apiKey = "'.$apiKey.'";' . 
-        'window.ballfrog.templates = window.ballfrog.templates || {};' . 
-        'window.ballfrog.templates["'.@$args['template'].'"] = "'.$tpl.'";' . 
+    $out = '<script>' .
+        'window.ballfrog = window.ballfrog || {};' .
+        'window.ballfrog.apiKey = "'.$apiKey.'";' .
+        'window.ballfrog.templates = window.ballfrog.templates || {};' .
+        'window.ballfrog.templates["'.@$args['template'].'"] = "'.$tpl.'";' .
         '</script>';
 
     /* add the arguments to the scoreboard element as data attributes */
 	foreach($args as $key => $val)
 		$attrs .= sprintf(
-            ' data-bfconfig-%s="%s" ', 
-            $key, 
+            ' data-bfconfig-%s="%s" ',
+            $key,
             addslashes($val)
         );
 
     /* output the shell element into which the scoreboard will be loaded */
 	$out .= sprintf(
-        '<div data-ballfrog="%s" %s><span class="loader">Loading scoreboard...</span>%s</div>', 
+        '<div data-ballfrog="%s" %s><span class="loader">Loading scoreboard...</span>%s</div>',
         $args['type'],
-        trim($attrs), 
+        trim($attrs),
         ballfrog_powered_by()
     );
 
@@ -63,7 +63,7 @@ function ballfrog_api_output($args)
 /**
  * Register and enqueue the plugin front-end assets
  */
-function ballfrog_add_assets() 
+function ballfrog_add_assets()
 {
     wp_register_script(
         'ballfrog-api',
@@ -77,7 +77,7 @@ function ballfrog_add_assets()
 
     // ------
 
-    wp_enqueue_style('ballfrog-api', plugin_dir_url(__FILE__) . 'css/ballfrog-api.css');
+    wp_enqueue_style('ballfrog-api', plugin_dir_url(__FILE__) . 'css/ballfrog-api.css?cachebust='.rand(1,99999));
 }
 
 // -------------
@@ -159,7 +159,7 @@ function ballfrog_api_settings_page()
                     </td>
                 </tr>
             </table>
-            
+
             <?php submit_button(); ?>
 
         </form>
